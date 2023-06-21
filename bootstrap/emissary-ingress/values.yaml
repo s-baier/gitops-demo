@@ -1,3 +1,6 @@
 emissary-ingress:
   ingressClassResource:
     default: true
+  module:
+    diagnostics:
+      enabled: true
