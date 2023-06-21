@@ -54,28 +54,6 @@ argocd-apps:
       kind: '*'
     sourceNamespaces:
     - argocd
-  - name: baseline
-    namespace: argocd
-    additionalLabels: {}
-    additionalAnnotations: {}
-    finalizers:
-    - resources-finalizer.argocd.argoproj.io
-    description: Argo CD
-    sourceRepos:
-    - https://github.com/s-baier/gitops-demo.git
-    destinations:
-    - namespace: argocd
-      server: https://kubernetes.default.svc
-    clusterResourceWhitelist:
-    - group: '*'
-      kind: '*'
-    clusterResourceBlacklist: []
-    namespaceResourceBlacklist: []
-    namespaceResourceWhitelist:
-    - group: '*'
-      kind: '*'
-    sourceNamespaces:
-    - argocd
 
   # -- Deploy Argo CD ApplicationSets within this helm release
   # @default -- `[]` (See [values.yaml])
