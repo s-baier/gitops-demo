@@ -10,3 +10,5 @@ argo-cd:
         name: docker-oci
         url: registry-1.docker.io
         enableOci: true
+        username: ''
+        password: ''
