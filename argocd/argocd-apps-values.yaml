@@ -63,9 +63,7 @@ argocd-apps:
     sourceRepos:
     - https://github.com/s-baier/gitops-demo.git
     destinations:
-    - namespace: bootstrap
-      server: https://kubernetes.default.svc
-    - namespace: emissary-ingress
+    - namespace: '*'
       server: https://kubernetes.default.svc
     clusterResourceWhitelist:
     - group: '*'
