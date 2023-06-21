@@ -1,0 +1,3 @@
+contour:
+  global:
+    storageClass: tanzu

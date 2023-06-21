@@ -1,3 +1,0 @@
-emissary-ingress:
-  ingressClassResource:
-    default: true
