@@ -38,6 +38,11 @@ kubectl port-forward service/argo-cd-argocd-server -n argocd 8080:443
 kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.password}" | base64 -d
 ```
 
+## Kubeseal
+
+For simplicity reason, the demo uses [sealed-secrets](https://github.com/bitnami-labs/sealed-secrets) to securely store secrets within a git repository.
+To encrypt secrets, the [kubeseal](https://github.com/bitnami-labs/sealed-secrets#kubeseal) cli needs to be installed locally.
+
 ## Slideshow
 
 * [markdown-slides](https://gitlab.com/da_doomer/markdown-slides)
