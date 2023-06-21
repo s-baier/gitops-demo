@@ -5,11 +5,6 @@
 * [Codefresh: Get Certified for GitOps with Argo](https://learning.codefresh.io/)
 * [Weaveworks: Awesome GitOps](https://github.com/weaveworks/awesome-gitops)
 
-## ArgoCD
-
-* https://artifacthub.io/packages/helm/argo/argo-cd
-* https://artifacthub.io/packages/helm/argo/argocd-apps
-
 ## Slideshow
 
 * [markdown-slides](https://gitlab.com/da_doomer/markdown-slides)

@@ -1,0 +1,13 @@
+apiVersion: v2
+name: cluster-bootstrap
+description: Bootstrapping for Kubernetes Cluster
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+dependencies:
+  - name: argo-cd
+    repository: https://argoproj.github.io/argo-helm
+    version: 5.36.2
+  - name: argocd-apps
+    repository: https://argoproj.github.io/argo-helm
+    version: 1.2.0

@@ -1,0 +1,7 @@
+argo-cd:
+  configs:
+    repositories:
+      gitops-demo:
+        url: https://github.com/s-baier/gitops-demo.git
+        name: gitops-demo
+        type: git
