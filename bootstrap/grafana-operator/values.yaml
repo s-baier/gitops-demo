@@ -1,0 +1,10 @@
+grafana-operator:
+  grafana:
+    ingress:
+      enabled: true
+      hostname: grafana.demo.cn.evoila-lab.work
+      ingressClassName: contour
+      annotations:
+        cert-manager.io/cluster-issuer: letsencrypt-staging
+      tls: true
+      tlsSecret: grafana.demo.cn.evoila-lab.work-tls

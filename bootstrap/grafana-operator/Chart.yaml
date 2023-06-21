@@ -1,0 +1,10 @@
+apiVersion: v2
+name: grafana-operator
+description: Grafana Operator is a Kubernetes operator that enables the installation and management of Grafana instances, dashboards and plugins.
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+dependencies:
+  - name: grafana-operator
+    repository: oci://registry-1.docker.io/bitnamicharts
+    version: 2.9.3
