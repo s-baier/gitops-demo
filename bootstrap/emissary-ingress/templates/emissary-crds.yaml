@@ -1,4 +1,6 @@
-# GENERATED FILE: edits made by hand will not be preserved.
+## GENERATED FILE: edits made by hand will not be preserved.
+## https://app.getambassador.io/yaml/emissary/3.7.0/emissary-crds.yaml
+## https://www.getambassador.io/docs/emissary/latest/tutorials/getting-started
 ---
 apiVersion: apiextensions.k8s.io/v1
 kind: CustomResourceDefinition
