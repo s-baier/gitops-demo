@@ -6,5 +6,5 @@ grafana-operator:
       ingressClassName: contour
       annotations:
         cert-manager.io/cluster-issuer: letsencrypt-staging
-      tls: true
-      tlsSecret: grafana.demo.cn.evoila-lab.work-tls
+      # tls: true
+      # tlsSecret: grafana.demo.cn.evoila-lab.work-tls
