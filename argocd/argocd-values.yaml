@@ -8,5 +8,5 @@ argo-cd:
       bitnami-charts:
         type: helm
         name: bitnami-charts
-        url: https://registry-1.docker.io/bitnamicharts
+        url: registry-1.docker.io/bitnamicharts/
         enableOci: 'true'
