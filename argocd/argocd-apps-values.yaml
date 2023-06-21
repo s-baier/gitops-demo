@@ -53,72 +53,63 @@ argocd-apps:
     - group: '*'
       kind: '*'
     sourceNamespaces:
-    - argocd
+  - name: bootstrap
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    description: Cluster Bootstrap
+    sourceRepos:
+    - https://github.com/s-baier/gitops-demo.git
+    destinations:
+    - namespace: argocd
+      server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+    clusterResourceBlacklist: []
+    namespaceResourceBlacklist: []
+    namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+    sourceNamespaces:
+    - '*'
 
-  # -- Deploy Argo CD ApplicationSets within this helm release
-  # @default -- `[]` (See [values.yaml])
-  ## Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/
-  applicationsets: []
-  # - name: guestbook
-  #   namespace: argocd
-  #   additionalLabels: {}
-  #   additionalAnnotations: {}
-  #   # See PR #10026 (ArgoCD v2.5 or later)
-  #   # goTemplate: false
-  #   generators:
-  #   - git:
-  #       repoURL: https://github.com/argoproj/argocd-example-apps.git
-  #       revision: HEAD
-  #       directories:
-  #       - path: guestbook
-  #       - path: kustomize-*
-  #   # Progressive Syncs is an experimental feature and it must be explicitly enabled
-  #   # Ref: https://argo-cd.readthedocs.io/en/stable/operator-manual/applicationset/Progressive-Syncs/#enabling-progressive-syncs
-  #   strategy:
-  #     type: RollingSync
-  #     rollingSync:
-  #       steps:
-  #       - matchExpressions:
-  #         - key: project
-  #           operator: In
-  #           values:
-  #           - guestbook
-  #       - matchExpressions:
-  #         - key: project
-  #           operator: In
-  #           values:
-  #           - kustomize-foo
-  #           - kustomize-bar
-  #   template:
-  #     metadata:
-  #       name: '{{path.basename}}'
-  #       labels:
-  #         project: '{{path.basename}}'
-  #       annotations: {}
-  #     spec:
-  #       project: default
-  #       source:
-  #         repoURL: https://github.com/argoproj/argocd-example-apps.git
-  #         targetRevision: HEAD
-  #         path: '{{path}}'
-  #       destination:
-  #         server: https://kubernetes.default.svc
-  #         namespace: default
-  #       syncPolicy:
-  #         automated:
-  #           prune: false
-  #           selfHeal: false
-  #       ignoreDifferences:
-  #       - group: apps
-  #         kind: Deployment
-  #         jsonPointers:
-  #         - /spec/replicas
-  #       info:
-  #       - name: url
-  #         value: https://argoproj.github.io/
-  #   syncPolicy:
-  #     # Set Application finalizer
-  #     preserveResourcesOnDeletion: false
+  applicationsets:
+  - name: bootstrap
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    generators:
+    - git:
+        repoURL: https://github.com/s-baier/gitops-demo.git
+        revision: HEAD
+        directories:
+        - path: bootstrap
+    template:
+      metadata:
+        name: '{{path.basename}}'
+        labels:
+          project: '{{path.basename}}'
+        annotations: {}
+      spec:
+        project: bootstrap
+        source:
+          repoURL: https://github.com/s-baier/gitops-demo.git
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: '{{ path.basename }}'
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
+    syncPolicy:
+      syncOptions:
+      - CreateNamespace=true
+      preserveResourcesOnDeletion: false
 
   # --  Deploy Argo CD Applications/ApplicationSets/Projects within this helm release
   # @default -- `[]` (See [values.yaml])
