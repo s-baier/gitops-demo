@@ -88,7 +88,7 @@ argocd-apps:
         repoURL: https://github.com/s-baier/gitops-demo.git
         revision: HEAD
         directories:
-        - path: bootstrap
+        - path: bootstrap/*
     template:
       metadata:
         name: '{{path.basename}}'
