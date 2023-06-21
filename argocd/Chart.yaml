@@ -1,5 +1,5 @@
 apiVersion: v2
-name: cluster-bootstrap
+name: argocd
 description: Bootstrapping for Kubernetes Cluster
 type: application
 version: 0.1.0
