@@ -46,18 +46,10 @@ argocd-apps:
       server: https://kubernetes.default.svc
     clusterResourceWhitelist: []
     clusterResourceBlacklist: []
-    namespaceResourceBlacklist:
-    - group: ''
-      kind: ResourceQuota
-    - group: ''
-      kind: LimitRange
-    - group: ''
-      kind: NetworkPolicy
+    namespaceResourceBlacklist: []
     namespaceResourceWhitelist:
-    - group: 'apps'
-      kind: Deployment
-    - group: 'apps'
-      kind: StatefulSet
+    - group: '*'
+      kind: '*'
     sourceNamespaces:
     - argocd
 
