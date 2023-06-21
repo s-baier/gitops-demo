@@ -107,8 +107,6 @@ argocd-apps:
             prune: true
             selfHeal: true
     syncPolicy:
-      syncOptions:
-      - CreateNamespace=true
       preserveResourcesOnDeletion: false
 
   # --  Deploy Argo CD Applications/ApplicationSets/Projects within this helm release
