@@ -10,12 +10,12 @@ argocd-apps:
     sources:
     - repoURL: https://github.com/s-baier/gitops-demo.git
       targetRevision: HEAD
-      path: deploy/argocd
+      path: argocd/
       helm:
         valueFiles:
-        - $values/deploy/argocd/values.yaml
-        - $values/deploy/argocd/argocd-values.yaml
-        - $values/deploy/argocd/argocd-apps-values.yaml
+        - $values/argocd/values.yaml
+        - $values/argocd/argocd-values.yaml
+        - $values/argocd/argocd-apps-values.yaml
     - repoURL: https://github.com/s-baier/gitops-demo.git
       targetRevision: HEAD
       ref: values
