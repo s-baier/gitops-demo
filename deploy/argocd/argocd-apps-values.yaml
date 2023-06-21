@@ -13,11 +13,11 @@ argocd-apps:
       path: deploy/argocd
       helm:
         valueFiles:
-        - $values/values.yaml
-        - $values/argocd-values.yaml
-        - $values/argocd-apps-values.yaml
+        - $values/deploy/argocd/values.yaml
+        - $values/deploy/argocd/argocd-values.yaml
+        - $values/deploy/argocd/argocd-apps-values.yaml
     - repoURL: https://github.com/s-baier/gitops-demo.git
-      path: deploy/argocd
+      targetRevision: HEAD
       ref: values
     destination:
       server: https://kubernetes.default.svc
