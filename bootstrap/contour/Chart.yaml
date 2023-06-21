@@ -6,5 +6,5 @@ version: 0.1.0
 appVersion: "0.1.0"
 dependencies:
   - name: contour
-    repository: oci://registry-1.docker.io/bitnamicharts/contour
+    repository: oci://registry-1.docker.io/bitnamicharts
     version: 12.1.1

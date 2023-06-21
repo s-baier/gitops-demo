@@ -5,8 +5,8 @@ argo-cd:
         url: https://github.com/s-baier/gitops-demo.git
         name: gitops-demo
         type: git
-      docker-oci:
+      bitnami-charts:
         type: helm
-        name: docker-oci
-        url: registry-1.docker.io
+        name: bitnami-charts
+        url: registry-1.docker.io/bitnamicharts
         enableOci: 'true'
