@@ -81,3 +81,8 @@ Tool choices to align with [OSS CNCF projects](https://landscape.cncf.io/?catego
   * pinniped
 * chaos-testing (chaos mesh / litmus)
 * testkube
+
+Additionally, one might want to deploy:
+
+* git
+* crossplane
