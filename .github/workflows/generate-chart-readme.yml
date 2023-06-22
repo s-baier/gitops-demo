@@ -1,11 +1,11 @@
 ## https://github.com/bitnami/charts/blob/main/.github/workflows/generate-chart-readme.yml
-
+##
 name: '[Support] Update README metadata'
 
 on:
   pull_request_target:
     branches:
-      - main
+      - no-branch
     paths:
       - 'charts/*/values.yaml'
 # Remove all permissions by default
