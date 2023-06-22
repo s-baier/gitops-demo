@@ -21,11 +21,14 @@ jobs:
     name: Get modified charts
     permissions:
       contents: read
-    if: ${{ github.event.pull_request.state != 'closed' }}
     outputs:
       chart: ${{ steps.get-chart.outputs.chart }}
       result: ${{ steps.get-chart.outputs.result }}
     steps:
+      - uses: actions/checkout@v3
+        with:
+          path: charts
+          fetch-depth: 2 # to be able to obtain files changed in the latest commit
       - name: Install dependencies
         run: sudo apt-get install -y patchutils
       - id: get-chart
