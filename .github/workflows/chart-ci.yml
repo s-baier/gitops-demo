@@ -92,9 +92,9 @@ jobs:
     permissions:
       packages: write
       contents: read
-    defaults:
-      run:
-        working-directory: ./charts/${{ needs.get-chart.outputs.chart }}
+    # defaults:
+    #   run:
+    #     working-directory: ./charts/${{ needs.get-chart.outputs.chart }}
     steps:
       - uses: actions/checkout@v3
         name: Checkout Repository
