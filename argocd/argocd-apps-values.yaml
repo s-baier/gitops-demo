@@ -76,6 +76,29 @@ argocd-apps:
       kind: '*'
     sourceNamespaces:
     - '*'
+  - name: dev
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    finalizers:
+    - resources-finalizer.argocd.argoproj.io
+    description: Development
+    sourceRepos:
+    - https://github.com/s-baier/gitops-demo.git
+    - ghcr.io/s-baier/gitops-demo
+    destinations:
+    - namespace: '*'
+      server: https://kubernetes.default.svc
+    clusterResourceWhitelist:
+    - group: '*'
+      kind: '*'
+    clusterResourceBlacklist: []
+    namespaceResourceBlacklist: []
+    namespaceResourceWhitelist:
+    - group: '*'
+      kind: '*'
+    sourceNamespaces:
+    - '*'
 
   applicationsets:
   - name: bootstrap
@@ -128,7 +151,7 @@ argocd-apps:
           project: '{{path.basename}}'
         annotations: {}
       spec:
-        project: bootstrap
+        project: dev
         source:
           repoURL: https://github.com/s-baier/gitops-demo.git
           targetRevision: HEAD
