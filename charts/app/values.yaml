@@ -2,7 +2,7 @@
 # This is a YAML-formatted file.
 # Declare variables to be passed into your templates.
 
-newValue: 9
+newValue: 0
 
 replicaCount: 1
 
