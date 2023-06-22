@@ -1,4 +1,9 @@
 app:
+  image:
+    repository: "ghcr.io/s-baier/demo-app"
+    pullPolicy: Always
+    # Overrides the image tag whose default is the chart appVersion.
+    tag: "latest"
   appPort: 9090
   ingress:
     enabled: true
