@@ -103,6 +103,10 @@ jobs:
 ## ${{ needs.get-chart.outputs.chart }}
       # - name: Test Chart
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+      - name: Sanity
+        run: |
+          pwd
+          ls -la
       - name: Build chart dependencies
         run: helm dependency build .
       - name: Lint chart
