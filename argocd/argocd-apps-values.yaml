@@ -111,6 +111,39 @@ argocd-apps:
             - CreateNamespace=true
     syncPolicy:
       preserveResourcesOnDeletion: false
+  - name: dev
+    namespace: argocd
+    additionalLabels: {}
+    additionalAnnotations: {}
+    generators:
+    - git:
+        repoURL: https://github.com/s-baier/gitops-demo.git
+        revision: HEAD
+        directories:
+        - path: envs/dev/*
+    template:
+      metadata:
+        name: '{{path.basename}}'
+        labels:
+          project: '{{path.basename}}'
+        annotations: {}
+      spec:
+        project: bootstrap
+        source:
+          repoURL: https://github.com/s-baier/gitops-demo.git
+          targetRevision: HEAD
+          path: '{{path}}'
+        destination:
+          server: https://kubernetes.default.svc
+          namespace: '{{ path.basename }}'
+        syncPolicy:
+          automated:
+            prune: true
+            selfHeal: true
+          syncOptions:
+            - CreateNamespace=true
+    syncPolicy:
+      preserveResourcesOnDeletion: false
 
   # --  Deploy Argo CD Applications/ApplicationSets/Projects within this helm release
   # @default -- `[]` (See [values.yaml])
