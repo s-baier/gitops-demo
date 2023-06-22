@@ -85,7 +85,7 @@ argocd-apps:
     description: Development
     sourceRepos:
     - https://github.com/s-baier/gitops-demo.git
-    - ghcr.io/s-baier/gitops-demo
+    - ghcr.io/s-baier
     destinations:
     - namespace: '*'
       server: https://kubernetes.default.svc
