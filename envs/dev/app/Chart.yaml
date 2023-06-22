@@ -1,0 +1,10 @@
+apiVersion: v2
+name: demo-app
+description: Demo Application for GitOps Demo
+type: application
+version: 0.1.0
+appVersion: "0.1.0"
+dependencies:
+  - name: app
+    repository: ghcr.io/s-baier/gitops-demo
+    version: 0.1.0
