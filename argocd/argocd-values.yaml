@@ -13,5 +13,5 @@ argo-cd:
       sbaier-charts:
         type: helm
         name: sbaier-charts
-        url: ghcr.io/s-baier/gitops-demo
+        url: ghcr.io/s-baier/gitops-demo/
         enableOci: 'true'
