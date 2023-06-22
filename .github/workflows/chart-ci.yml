@@ -105,14 +105,15 @@ jobs:
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Sanity
         run: |
+          echo ${{ needs.get-chart.outputs.chart }}
           pwd
           ls -la
       - name: Build chart dependencies
-        run: helm dependency build .
+        run: helm dependency build ${{ needs.get-chart.outputs.chart }}
       - name: Lint chart
-        run: helm lint .
+        run: helm lint ${{ needs.get-chart.outputs.chart }}
       - name: Package chart
-        run: helm package .
+        run: helm package ${{ needs.get-chart.outputs.chart }}
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push chart to registry
