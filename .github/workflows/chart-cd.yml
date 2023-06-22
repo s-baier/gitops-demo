@@ -86,30 +86,25 @@ jobs:
     runs-on: ubuntu-latest
     needs: get-chart
     if: ${{ needs.get-chart.outputs.result == 'ok' }}
-    name: Verify and publish ${{ needs.get-chart.outputs.chart }}
+    name: Verify and publish chart ${{ needs.get-chart.outputs.chart }}
     permissions:
       packages: write
       contents: read
     defaults:
       run:
-        working-directory: ./charts/${{ needs.get-chart.outputs.chart }}
+        working-directory: ./charts
     steps:
       - uses: actions/checkout@v3
         name: Checkout Repository
-        with:
-          path: charts
-## ${{ needs.get-chart.outputs.chart }}
-      # - name: Test Chart
-      #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Build chart dependencies
         run: helm dependency build ${{ needs.get-chart.outputs.chart }}
       - name: Lint chart
         run: helm lint ${{ needs.get-chart.outputs.chart }}
       - name: Package chart
-        run: helm package ${{ needs.get-chart.outputs.chart }} .
+        run: helm package ${{ needs.get-chart.outputs.chart }}
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push chart to registry
         run:  |
-          export CHART_VERSION=$(yq .version Chart.yaml)
+          export CHART_VERSION=$(yq .version ${{ needs.get-chart.outputs.chart }}/Chart.yaml)
           helm push ${{ needs.get-chart.outputs.chart }}-${CHART_VERSION}.tgz oci://ghcr.io/${{ github.repository_owner }}
