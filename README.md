@@ -43,6 +43,11 @@ kubectl -n argocd get secret argocd-initial-admin-secret -o jsonpath="{.data.pas
 For simplicity reason, the demo uses [sealed-secrets](https://github.com/bitnami-labs/sealed-secrets) to securely store secrets within a git repository.
 To encrypt secrets, the [kubeseal](https://github.com/bitnami-labs/sealed-secrets#kubeseal) cli needs to be installed locally.
 
+## CI/CD with GitHub Actions
+
+* [GitHub Actions](https://docs.github.com/en/actions)
+* [GitHub Actions Marketplace](https://github.com/marketplace?type=actions)
+
 ## Slideshow
 
 * [markdown-slides](https://gitlab.com/da_doomer/markdown-slides)
