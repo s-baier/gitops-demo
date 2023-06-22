@@ -5,6 +5,7 @@ name: '[Support] Update README metadata'
 on:
   pull_request_target:
     branches:
+      ## TODO update if ready to use
       - no-branch
     paths:
       - 'charts/*/values.yaml'
