@@ -98,12 +98,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checkout Repository
-      - name: Sanity
-        run: |
-          echo ${{ needs.get-chart.outputs.chart }}
-          pwd
-          ls -la
-          ls -la ..
       - name: Build chart dependencies
         run: helm dependency build ${{ needs.get-chart.outputs.chart }}
       - name: Lint chart
