@@ -18,7 +18,7 @@ func Hello(name string) string {
 		return "Hello, stranger! Are you lost?!"
 	}
 
-	message := fmt.Sprintf("Hello %v, welcome to the GitOps Demo!", name)
+	message := fmt.Sprintf("Hello %v, welcome to the GitOps demo!", name)
 	return message
 }
 
