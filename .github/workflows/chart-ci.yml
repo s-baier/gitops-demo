@@ -114,5 +114,5 @@ jobs:
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push chart to registry
         run:  |
-          export CHART_VERSION=$(yq .version Chart.yaml)
+          export CHART_VERSION=$(yq .version ${{ needs.get-chart.outputs.chart }}/Chart.yaml)
           helm push ${{ needs.get-chart.outputs.chart }}-${CHART_VERSION}.tgz oci://ghcr.io/${{ github.repository_owner }}
