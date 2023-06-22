@@ -59,3 +59,25 @@ python -m http.server -d slides -p 8000
 ```
 
 To change the theme go to `./slides/index.html` and set the href of `#theme` to one of the available ones under `./slides/dist/theme` (c.f. ).
+
+## TODO
+
+Tool choices to align with [OSS CNCF projects](https://landscape.cncf.io/?category=""&organization=cloud-native-computing-foundation-cncf&grouping=category).
+
+* (?) emissary-ingress instead of contour
+* external-dns
+* external-secrets
+* monitoring (prometheus)
+* logging (fluentd)
+* logging-backend
+* tracing
+* secret-store (vault?)
+* policy-management (kyverno)
+* runtime security (falco)
+* service-mesh (linkerd / istio)
+* registry (harbor)
+* authn/authz:
+  * keycloak
+  * pinniped
+* chaos-testing (chaos mesh / litmus)
+* testkube
