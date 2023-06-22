@@ -90,6 +90,9 @@ jobs:
     permissions:
       packages: write
       contents: read
+    defaults:
+      run:
+        working-directory: ./charts/${{ needs.get-chart.outputs.chart }}
     steps:
       - uses: actions/checkout@v3
         name: Checkout Repository
@@ -98,19 +101,15 @@ jobs:
 ## ${{ needs.get-chart.outputs.chart }}
       # - name: Test Chart
       #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
+      - name: Build chart dependencies
+        run: helm dependency build ${{ needs.get-chart.outputs.chart }}
+      - name: Lint chart
+        run: helm lint ${{ needs.get-chart.outputs.chart }}
+      - name: Package chart
+        run: helm package ${{ needs.get-chart.outputs.chart }} .
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push chart to registry
         run:  |
-          export CHART_VERSION=$(yq .version ${{ needs.get-chart.outputs.chart }}/Chart.yaml)
-          helm push ${{ needs.get-chart.outputs.chart }}-${CHART_VERSION}.tgz oci://ghcr.io/s-baier
-
-## https://niklasmtj.de/blog/use-ghcr-to-host-helm-charts/
-## export CHART_VERSION=$(grep 'version:' ./example-chart/Chart.yaml | tail -n1 | awk '{ print $2}')
-# echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
-# helm push example-chart-${CHART_VERSION}.tgz oci://ghcr.io/s-baier
-##     - helm dependency update "$CHART"
-    # - helm dependency build "$CHART"
-    # - helm lint "$CHART"
-    # - helm package "$CHART" ./"$CHART"
-
+          export CHART_VERSION=$(yq .version Chart.yaml)
+          helm push ${{ needs.get-chart.outputs.chart }}-${CHART_VERSION}.tgz oci://ghcr.io/${{ github.repository_owner }}
