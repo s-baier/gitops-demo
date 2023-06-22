@@ -28,7 +28,7 @@ Systems Development Life Cylce (SDLC)
 
 ---
 
-### DevOps?!
+### DevOps?
 
 > DevOps is a combination of software development (dev) and operations (ops)
 > by facilitating a culture of collaboration and shared responsibility.
@@ -187,13 +187,9 @@ Software agents continuously observe actual system state and attempt to apply th
 
 ---
 
-## How: Theory
+## How: ArgoCD
 
----
-
-### Pull vs Push
-
-<https://www.weave.works/technologies/gitops/#a-diy-gitops-pipeline>
+Demo
 
 ---
 
