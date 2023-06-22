@@ -1,3 +1,5 @@
+## https://github.com/bitnami/charts/blob/main/.github/workflows/generate-chart-readme.yml
+
 name: '[Support] Update README metadata'
 
 on:
