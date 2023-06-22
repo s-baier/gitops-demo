@@ -1,4 +1,4 @@
-name: Go Application CI
+name: Go Application CI/CD
 
 on:
   push:
@@ -48,6 +48,29 @@ jobs:
         # This is where you will update the personal access token to GITHUB_TOKEN
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push image
+        ######################## DEFINITION OF IMAGE TAG
+        # if the user provide IMAGE_TAG then use it, else build the image tag using the default logic.
+        # Default logic
+        # Compose docker tag name
+        # Git Branch/Tag to Docker Image Tag Mapping
+        #   * Default Branch: main -> latest
+        #   * Branch: feature/my-feature -> branch-feature-my-feature
+        #   * Tag: v1.0.0/beta2 -> v1.0.0-beta2
+        # |
+        #   if [ -z ${IMAGE_TAG+x} ]; then
+        #     if [ "$CI_COMMIT_REF_NAME" = $CI_DEFAULT_BRANCH ]; then
+        #         VERSION="latest"
+        #       elif [ -n "$CI_COMMIT_TAG" ];then
+        #         NOSLASH=$(echo "$CI_COMMIT_TAG" | tr -s / - )
+        #         SANITIZED="${NOSLASH//[^a-zA-Z0-9.-]/}"
+        #         VERSION="$SANITIZED"
+        #       else \
+        #         NOSLASH=$(echo "$CI_COMMIT_REF_NAME-$CI_COMMIT_SHORT_SHA" | tr -s / - )
+        #         SANITIZED="${NOSLASH//[^a-zA-Z0-9-]/}"
+        #         VERSION="$SANITIZED"
+        #       fi
+        #     export IMAGE_TAG=$CI_REGISTRY_IMAGE:$VERSION
+        # fi
         run: |
           IMAGE_ID=ghcr.io/${{ github.repository_owner }}/$IMAGE_NAME
 
