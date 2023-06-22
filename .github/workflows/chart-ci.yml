@@ -98,11 +98,6 @@ jobs:
     steps:
       - uses: actions/checkout@v3
         name: Checkout Repository
-        with:
-          path: charts
-## ${{ needs.get-chart.outputs.chart }}
-      # - name: Test Chart
-      #   run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Sanity
         run: |
           echo ${{ needs.get-chart.outputs.chart }}
@@ -110,11 +105,11 @@ jobs:
           ls -la
           ls -la ..
       - name: Build chart dependencies
-        run: helm dependency build ./${{ needs.get-chart.outputs.chart }}
+        run: helm dependency build ${{ needs.get-chart.outputs.chart }}
       - name: Lint chart
-        run: helm lint ./${{ needs.get-chart.outputs.chart }}
+        run: helm lint ${{ needs.get-chart.outputs.chart }}
       - name: Package chart
-        run: helm package ./${{ needs.get-chart.outputs.chart }}
+        run: helm package ${{ needs.get-chart.outputs.chart }}
       - name: Log in to registry
         run: echo "${{ secrets.GITHUB_TOKEN }}" | docker login ghcr.io -u $ --password-stdin
       - name: Push chart to registry
