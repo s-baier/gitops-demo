@@ -15,7 +15,7 @@ func getEnv(key, fallback string) string {
 
 func Hello(name string) string {
 	if name == "" {
-		return "Hello, stranger! Are you lost?!"
+		return "Hello, stranger! Are you lost?"
 	}
 
 	message := fmt.Sprintf("Hello %v, welcome to the GitOps demo!", name)

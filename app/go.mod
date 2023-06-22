@@ -1,3 +1,3 @@
-module edp/hello
+module demo/hello
 
 go 1.19
