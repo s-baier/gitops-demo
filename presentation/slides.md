@@ -198,7 +198,7 @@ Software agents continuously observe actual system state and attempt to apply th
 
 ### How: Argo CD
 
-![Arg CD Process](./auto-process.png)
+![Argo CD Process](./auto-process.png)
 
 ---
 

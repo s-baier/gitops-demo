@@ -67,6 +67,8 @@ To change the theme go to `./slides/index.html` and set the href of `#theme` to 
 
 ## TODO
 
+Fix issue with CRDS on one shot argo cd install
+
 Tool choices to align with [OSS CNCF projects](https://landscape.cncf.io/?category=""&organization=cloud-native-computing-foundation-cncf&grouping=category).
 
 * (?) emissary-ingress instead of contour
