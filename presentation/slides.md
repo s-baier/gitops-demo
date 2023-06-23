@@ -187,9 +187,30 @@ Software agents continuously observe actual system state and attempt to apply th
 
 ---
 
-## How: ArgoCD
+## How? Tooling
+
+* Argo CD
+* Flux CD
+* JenkinsX
+* ...
+
+---
+
+### How: Argo CD
+
+![Arg CD Process](./auto-process.png)
+
+---
+
+### Argo CD
 
 Demo
+
+---
+
+### Gitopsify Everyting
+
+Kubernetes Cluster Deployment with Argo CD + Crossplane
 
 ---
 
