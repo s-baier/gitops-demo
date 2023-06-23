@@ -208,9 +208,14 @@ Demo
 
 ---
 
-### Gitopsify Everyting
+## And Now?
 
-Kubernetes Cluster Deployment with Argo CD + Crossplane
+GitOpsify Everything
+
+* Argo Rollouts
+* Argo Workflows
+* Crossplane!
+* ...
 
 ---
 
